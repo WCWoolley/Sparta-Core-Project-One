@@ -24,15 +24,24 @@ table {
   border: 1px solid;
   width: 80%;
   margin-left: 10%;
+  table-layout: fixed;
   background-image: url(../images/Background-Image.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 10px 10%;
 }
 
+th {
+  height: 15px;
+  width: 15px;
+  white-space: nowrap;
+  /* border: 1px solid white; */
+}
+
 td {
   height: 15px;
   width: 15px;
+  white-space: nowrap;
   /* border: 1px solid white; */
 }
 
