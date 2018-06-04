@@ -2,16 +2,16 @@ body {
   background-color: black;
 }
 
-#Game-Title {
+.Game-Title {
   color: white;
 }
 
-#Game-Window {
+.Game-Window {
   border: 2px solid white;
   text-align: center;
 }
 
-#Controls-Window {
+.Controls-Window {
   border: 2px solid white;
   text-align: center;
 }
