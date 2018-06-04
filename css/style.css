@@ -52,3 +52,11 @@ td {
   height: 15px;
   width: 15px;
 }
+
+.pacman {
+  height:15px;
+  width:15px;
+  background: yellow;
+  border-radius: 50%;
+  position: absolute;
+}
