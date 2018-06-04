@@ -32,17 +32,21 @@ table {
 }
 
 th {
+  margin: 0;
+  padding: 0;
   height: 15px;
   width: 15px;
   white-space: nowrap;
-  /* border: 1px solid white; */
+  border: 1px solid;
 }
 
 td {
+  margin: 0;
+  padding: 0;
   height: 15px;
   width: 15px;
   white-space: nowrap;
-  /* border: 1px solid white; */
+  border: 1px solid;
 }
 
 .Play {
@@ -62,10 +66,19 @@ td {
   width: 15px;
 }
 
+.container1 {
+  margin: 0;
+  padding-bottom: 14px;
+  padding-left: 1px;
+}
+
 .pacman {
+  margin: 0;
+  padding: 0;
   height:15px;
   width:15px;
   background: yellow;
   border-radius: 50%;
   position: absolute;
+  visibility: hidden;
 }
