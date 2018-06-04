@@ -2,16 +2,16 @@ body {
   background-color: black;
 }
 
-#Game-Title {
+.Game-Title {
   color: white;
 }
 
-#Game-Window {
+.Game-Window {
   border: 2px solid white;
   text-align: center;
 }
 
-#Controls-Window {
+.Controls-Window {
   border: 2px solid white;
   text-align: center;
 }
@@ -32,4 +32,21 @@ table {
 
 td {
   height: 15px;
+  width: 15px;
+}
+
+.Play {
+  padding: 0;
+  margin: 0;
+  color: white;
+  height: 15px;
+}
+
+.PBtn {
+  padding: 0;
+  margin: 0;
+  background-color: black;
+  border: 1px solid white;
+  height: 15px;
+  width: 15px;
 }
