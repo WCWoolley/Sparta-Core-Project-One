@@ -1,0 +1,31 @@
+body {
+  background-color: black;
+}
+
+.Game-Title {
+  color: white;
+}
+
+.Game-Window {
+  border: 2px solid white;
+  text-align: center;
+}
+
+.Controls-Window {
+  border: 2px solid white;
+  text-align: center;
+}
+
+.Controls {
+  color: white;
+}
+
+table {
+  border: 1px solid white;
+  width: 80%;
+  margin-left: 10%;
+}
+
+td {
+  height: 15px;
+}
