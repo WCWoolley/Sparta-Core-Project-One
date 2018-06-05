@@ -40,10 +40,10 @@ $(document).ready(function(){
   }
 
   var board = $('#Game-Window');
+  var board2 = $('#Game-Over-Window');
   var cellCount = 0;
   var score = 0;
-  var finalscore = 0;
-  var time = 1;
+  var time = 30;
   var interval;
 
   function drawMaze(){
