@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var maze = [
-    [3,3,0,3,7,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
+    [3,3,0,3,7,3,3,3,3,3,3,8,3,3,9,3,3,3,3,3,3,3,3,3,3,3,3,3],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
@@ -42,6 +42,8 @@ $(document).ready(function(){
   var board = $('#Game-Window');
   var cellCount = 0;
   var score = 0;
+  var finalscore = 0;
+  var time = 1;
   var interval;
 
   function drawMaze(){
@@ -72,6 +74,12 @@ $(document).ready(function(){
           row.append(col);
         } else if (maze[i][j] === 7) {
           var col = $(`<td class="col score2">-${score}</td>`).css("border","none").css("color","white")
+          row.append(col);
+        } else if (maze[i][j] === 8) {
+          var col = $(`<td class="col time1">Time Left:</td>`).css("border","none").css("color","white")
+          row.append(col);
+        } else if (maze[i][j] === 9) {
+          var col = $(`<td class="col time2">-${time}</td>`).css("border","none").css("color","white");
           row.append(col);
         }
         cellCount++;
@@ -154,5 +162,16 @@ $(document).ready(function(){
   }
 
   drawMaze();
+
+  var myVar = setInterval(myTimer, 1000);
+
+  function myTimer() {
+    if (time != 0) {
+      time--;
+      drawMaze();
+    } else {
+      document.location.href = 'gameover.html';
+    }
+  }
 
 });
