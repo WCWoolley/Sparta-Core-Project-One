@@ -1,9 +1,5 @@
 $(document).ready(function(){
 
-  var $wall = $('.wall')
-  var $pacman = $('.pacman');
-  var interval;
-
   var maze = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -28,7 +24,7 @@ $(document).ready(function(){
     [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
-    [1,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,1],
+    [1,2,2,2,1,1,2,2,2,2,2,2,2,2,5,2,2,2,2,2,2,2,1,1,2,2,2,1],
     [1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1],
     [1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1],
     [1,2,2,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,1],
@@ -61,13 +57,18 @@ $(document).ready(function(){
       } else if (maze[i][j] === 4) {
         var col = $(`<td class="col door${cellCount}"></td>`).css("background","black")
         row.append(col);
+      } else if (maze[i][j] === 5) {
+        var col = $(`<td class="col space${cellCount}"><div class="container1"><div class="pacman"></div></div></td>`).css("background","black")
+        row.append(col);
       }
       cellCount++;
     }
     board.append(row);
   }
 
-
+  var $wall = $('.wall')
+  var $pacman = $('.pacman');
+  var interval;
 
   setInterval(movePlane, 100);
   var keys = {}
