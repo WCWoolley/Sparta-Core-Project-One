@@ -42,10 +42,7 @@ $(document).ready(function(){
   var board = $('#Game-Window');
   var cellCount = 0;
   var score = 0;
-  var wallLeft = [];
-  var wallTop = [];
-  var wallRight = [];
-  var wallBottom = [];
+  var interval;
 
   function drawMaze(){
     document.getElementById(`Game-Window`).innerHTML = "";
@@ -91,17 +88,33 @@ $(document).ready(function(){
         maze[pacman.y][pacman.x] = 5;
         drawMaze();
       } else if (maze[pacman.y][pacman.x-1] !==1) {
-        maze[pacman.y][pacman.x] = 3;
-        pacman.x = pacman.x - 1;
-        maze[pacman.y][pacman.x] = 5;
-        drawMaze();
+        if (maze[pacman.y][pacman.x-1] ==2) {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.x = pacman.x - 1;
+          maze[pacman.y][pacman.x] = 5;
+          score += 100;
+          drawMaze();
+        } else {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.x = pacman.x - 1;
+          maze[pacman.y][pacman.x] = 5;
+          drawMaze();
+        }
       }
     } else if ((e.keyCode === 38)) {
       if (maze[pacman.y-1][pacman.x] !==1) {
-        maze[pacman.y][pacman.x] = 3;
-        pacman.y = pacman.y - 1;
-        maze[pacman.y][pacman.x] = 5;
-        drawMaze();
+        if (maze[pacman.y-1][pacman.x] ==2) {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.y = pacman.y - 1;
+          maze[pacman.y][pacman.x] = 5;
+          score += 100;
+          drawMaze();
+        } else {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.y = pacman.y - 1;
+          maze[pacman.y][pacman.x] = 5;
+          drawMaze();
+        }
       }
     } else if ((e.keyCode === 39)) {
       if (maze[pacman.y][pacman.x+1] ==6) {
@@ -110,17 +123,32 @@ $(document).ready(function(){
         maze[pacman.y][pacman.x] = 5;
         drawMaze();
       } else if (maze[pacman.y][pacman.x+1] !==1) {
-        maze[pacman.y][pacman.x] = 3;
-        pacman.x = pacman.x + 1;
-        maze[pacman.y][pacman.x] = 5;
-        drawMaze();
+        if (maze[pacman.y][pacman.x+1] ==2) {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.x = pacman.x + 1;
+          maze[pacman.y][pacman.x] = 5;
+          score += 100;
+          drawMaze();
+        } else {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.x = pacman.x + 1;
+          maze[pacman.y][pacman.x] = 5;
+          drawMaze();
+        }
       }
     } else if ((e.keyCode === 40)) {
       if (maze[pacman.y+1][pacman.x] !==1) {
-        maze[pacman.y][pacman.x] = 3;
-        pacman.y = pacman.y + 1;
-        maze[pacman.y][pacman.x] = 5;
-        drawMaze();
+        if (maze[pacman.y+1][pacman.x] ==2) {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.y = pacman.y + 1;
+          maze[pacman.y][pacman.x] = 5;
+          drawMaze();
+        } else {
+          maze[pacman.y][pacman.x] = 3;
+          pacman.y = pacman.y + 1;
+          maze[pacman.y][pacman.x] = 5;
+          drawMaze();
+        }
       }
     }
   }
