@@ -1,9 +1,5 @@
 $(document).ready(function(){
 
-  var $wall = $('.wall')
-  var $pacman = $('.pacman');
-  var interval;
-
   var maze = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -19,7 +15,7 @@ $(document).ready(function(){
     [1,1,1,1,1,1,2,1,1,2,2,2,2,2,2,2,2,2,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,1,4,4,4,4,1,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,3,3,3,3,3,3,1,2,1,1,2,1,1,1,1,1,1],
-    [2,2,2,2,2,2,2,2,2,2,1,3,3,3,3,3,3,1,2,2,2,2,2,2,2,2,2,2],
+    [6,2,2,2,2,2,2,2,2,2,1,3,3,3,3,3,3,1,2,2,2,2,2,2,2,2,2,6],
     [1,1,1,1,1,1,2,1,1,2,1,3,3,3,3,3,3,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,2,2,2,2,2,2,2,2,2,1,1,2,1,1,1,1,1,1],
@@ -28,7 +24,7 @@ $(document).ready(function(){
     [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
-    [1,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,1],
+    [1,2,2,2,1,1,2,2,2,2,2,2,2,2,5,2,2,2,2,2,2,2,1,1,2,2,2,1],
     [1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1],
     [1,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,2,1,1,1],
     [1,2,2,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,1],
@@ -42,6 +38,10 @@ $(document).ready(function(){
 
   var board = $('#Game-Window');
   var cellCount = 0;
+  var wallLeft = [];
+  var wallTop = [];
+  var wallRight = [];
+  var wallBottom = [];
 
   for (var i = 0; i < maze.length; i++) {
     var row = $('<tr class="row"></tr>');
@@ -53,7 +53,7 @@ $(document).ready(function(){
         var col = $(`<td class="col wall${cellCount}"></td>`).css("background","white")
         row.append(col);
       } else if (maze[i][j] === 2) {
-        var col = $(`<td class="col space${cellCount}"></td>`).css("background","black")
+        var col = $(`<td class="col space${cellCount}"><div class="container2"><div class="coin"></div></div></td>`)
         row.append(col);
       } else if (maze[i][j] === 3) {
         var col = $(`<td class="col cage${cellCount}"></td>`).css("background","black")
@@ -61,15 +61,22 @@ $(document).ready(function(){
       } else if (maze[i][j] === 4) {
         var col = $(`<td class="col door${cellCount}"></td>`).css("background","black")
         row.append(col);
+      } else if (maze[i][j] === 5) {
+        var col = $(`<td class="col space${cellCount}"><div class="container1"><div class="pacman"></div></div></td>`).css("background","black")
+        row.append(col);
+      } else if (maze[i][j] === 6) {
+        var col = $(`<td class="col exit${cellCount}"></td>`).css("background","black")
+        row.append(col);
       }
       cellCount++;
     }
     board.append(row);
   }
 
+  var $pacman = $('.pacman');
+  var interval;
 
-
-  setInterval(movePlane, 100);
+  setInterval(movePlane, 200);
   var keys = {}
 
   $(document).keydown(function(e) {
@@ -96,7 +103,37 @@ $(document).ready(function(){
         $pacman.animate({top: "+=300"}, 1000, "linear");
       }
 
+
+        interval = setInterval(function(){
+          // Check ball position
+          var pacLeft = $pacman.offset().left;
+          var pacTop = $pacman.offset().top;
+          var pacRight = pacLeft + $pacman.width();
+          var pacBottom = pacTop + $pacman.height();
+
+          // When ballRight is greater than containerRight
+          if (pacRight >= wallLeft[i]) {
+            $pacman.stop();
+          }
+
+          // When ballLeft is less than containerRight
+          if (pacLeft <= wallRight[i]) {
+            $pacman.stop();
+          }
+
+          // When ballBottom is greater than containerBottom
+          if (pacBottom >= wallTop[i]) {
+            $pacman.stop();
+          }
+
+          // When ballTop is less than containerTop
+          if (pacTop <= wallBottom[i]) {
+            $pacman.stop();
+          }
+        }, 20);
       
     }
+
+
   }
 });
