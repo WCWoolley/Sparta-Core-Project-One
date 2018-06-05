@@ -103,6 +103,7 @@ $(document).ready(function(){
         $pacman.animate({top: "+=300"}, 1000, "linear");
       }
 
+
         interval = setInterval(function(){
           // Check ball position
           var pacLeft = $pacman.offset().left;
@@ -132,6 +133,7 @@ $(document).ready(function(){
         }, 20);
       
     }
+
 
   }
 });
