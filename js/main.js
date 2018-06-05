@@ -38,6 +38,10 @@ $(document).ready(function(){
 
   var board = $('#Game-Window');
   var cellCount = 0;
+  var wallLeft = [];
+  var wallTop = [];
+  var wallRight = [];
+  var wallBottom = [];
 
   for (var i = 0; i < maze.length; i++) {
     var row = $('<tr class="row"></tr>');
@@ -49,7 +53,7 @@ $(document).ready(function(){
         var col = $(`<td class="col wall${cellCount}"></td>`).css("background","white")
         row.append(col);
       } else if (maze[i][j] === 2) {
-        var col = $(`<td class="col space${cellCount}"></td>`).css("background","black")
+        var col = $(`<td class="col space${cellCount}"><div class="container2"><div class="coin"></div></div></td>`)
         row.append(col);
       } else if (maze[i][j] === 3) {
         var col = $(`<td class="col cage${cellCount}"></td>`).css("background","black")
@@ -66,11 +70,10 @@ $(document).ready(function(){
     board.append(row);
   }
 
-  var $wall = $('.wall')
   var $pacman = $('.pacman');
   var interval;
 
-  setInterval(movePlane, 100);
+  setInterval(movePlane, 200);
   var keys = {}
 
   $(document).keydown(function(e) {
@@ -97,45 +100,38 @@ $(document).ready(function(){
         $pacman.animate({top: "+=300"}, 1000, "linear");
       }
 
-      // interval = setInterval(function(){
-      // Check ball position
-      // var pacLeft = $pacman.offset().left;
-      // var pacTop = $pacman.offset().top;
-      // var pacRight = pacLeft + $pacman.width();
-      // var pacBottom = pacTop + $pacman.height();
-      //
-      // // Check container position
-      // var wallLeft = $wall.offset().left;
-      // var wallTop = $wall.offset().top;
-      // var wallRight = wallLeft + $wall.width();
-      // var wallBottom = wallTop + $wall.height();
+      for (var i = 0; i < wallLeft.length; i++) {
 
-      // When ballRight is greater than containerRight
-      // if (pacRight > wallLeft) {
-      //   $pacman.stop();
-      // }
+        interval = setInterval(function(){
+          // Check ball position
+          var pacLeft = $pacman.offset().left;
+          var pacTop = $pacman.offset().top;
+          var pacRight = pacLeft + $pacman.width();
+          var pacBottom = pacTop + $pacman.height();
 
-      // When ballLeft is less than containerRight
-      // if (pacLeft < wallRight) {
-      //   $pacman.stop();
-      // }
+          // When ballRight is greater than containerRight
+          if (pacRight >= wallLeft[i]) {
+            $pacman.stop();
+          }
 
-      // When ballBottom is greater than containerBottom
-      // if (pacBottom >= wallTop) {
-      //   $pacman.stop();
-      // }
+          // When ballLeft is less than containerRight
+          if (pacLeft <= wallRight[i]) {
+            $pacman.stop();
+          }
 
-      // When ballTop is less than containerTop
-      // if (pacTop <= wallBottom) {
-      //   $pacman.stop();
-      // }
-      // console.log(pacTop);
-      // console.log(wallBottom);
-      // }, 20)
+          // When ballBottom is greater than containerBottom
+          if (pacBottom >= wallTop[i]) {
+            $pacman.stop();
+          }
+
+          // When ballTop is less than containerTop
+          if (pacTop <= wallBottom[i]) {
+            $pacman.stop();
+          }
+        }, 20);
+      }
+
     }
+
   }
-
-
-  // console.log($wall.offset().left);
-
 });

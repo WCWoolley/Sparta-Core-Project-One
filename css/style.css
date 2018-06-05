@@ -66,6 +66,12 @@ td {
   padding-left: 4%;
 }
 
+.container2 {
+  margin: 0;
+  padding-bottom: 2%;
+  padding-left: 35%;
+}
+
 .pacman {
   margin: 0;
   padding: 0;
@@ -75,5 +81,15 @@ td {
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
+  visibility: visible;
+}
+
+.coin {
+  margin: 0;
+  padding: 0;
+  height: 5px;
+  width: 5px;
+  background-color: orange;
+  border-radius: 50%;
   visibility: visible;
 }
