@@ -161,7 +161,9 @@ $(document).ready(function(){
     }
   }
 
+
   drawMaze();
+
 
   var myVar = setInterval(myTimer, 1000);
 
@@ -172,6 +174,7 @@ $(document).ready(function(){
     } else {
       document.location.href = 'gameover.html';
     }
+
   }
 
 });
