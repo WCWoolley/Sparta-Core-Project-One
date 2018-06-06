@@ -40,10 +40,9 @@ $(document).ready(function(){
   }
 
   var board = $('#Game-Window');
-  var board2 = $('#Game-Over-Window');
   var cellCount = 0;
   var score = 0;
-  var time = 30;
+  var time = 3;
   var interval;
 
   function drawMaze(){
@@ -172,6 +171,7 @@ $(document).ready(function(){
       time--;
       drawMaze();
     } else {
+      sessionStorage.setItem("score",`${score}`);
       document.location.href = 'gameover.html';
     }
 

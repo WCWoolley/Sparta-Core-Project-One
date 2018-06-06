@@ -99,3 +99,14 @@ td {
   border-radius: 50%;
   visibility: visible;
 }
+
+.end {
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  width: 100%;
+  white-space: nowrap;
+  border: none;
+  color: white;
+  font-size: 20px;
+}
