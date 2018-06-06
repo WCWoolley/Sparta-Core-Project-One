@@ -612,6 +612,7 @@ $(document).ready(function(){
       sessionStorage.setItem("score",`${score}`);
       document.location.href = 'gameover.html';
     }
+
   }
 
 });
