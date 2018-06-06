@@ -42,7 +42,7 @@ $(document).ready(function(){
   var board = $('#Game-Window');
   var cellCount = 0;
   var score = 0;
-  var time = 3;
+  var time = 45;
   var interval;
 
   function drawMaze(){
