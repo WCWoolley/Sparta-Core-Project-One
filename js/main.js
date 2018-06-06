@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var maze = [
-    [3,3,0,3,3,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
+    [3,3,0,3,3,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,13,3,3,3,3,3,3,3],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
@@ -54,10 +54,16 @@ $(document).ready(function(){
     y: 14
   }
 
+  var clyde = {
+    x: 15,
+    y: 14
+  }
+
   var board = $('#Game-Window');
   var cellCount = 0;
   var score = 0;
-  var time = 45;
+  var lives = 3;
+  var time = 0;
   var interval;
 
   function drawMaze(){
@@ -103,6 +109,9 @@ $(document).ready(function(){
           row.append(col);
         } else if (maze[i][j] === 12) {
           var col = $(`<td class="col cage${cellCount}"></td>`).css("background","black").css("border","none")
+          row.append(col);
+        } else if (maze[i][j] === 13) {
+          var col = $(`<td class="col score1">Lives:-${lives}</td>`).css("border","none").css("color","white")
           row.append(col);
         }
         cellCount++;
@@ -466,15 +475,106 @@ $(document).ready(function(){
     }
   }
 
+  var clydeMove = setInterval(clydeMove, 250)
+
+  function inkyMove() {
+    var directionB = Math.random() * 10;
+    if (maze[inky.y-1][inky.x] ==12) {
+      maze[inky.y][inky.x] = 12;
+      inky.y = 11;
+      maze[inky.y][inky.x] = 10;
+      drawMaze();
+    } else if (directionB <= 2.5) {
+      if (maze[inky.y][inky.x-1] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x-1] ==6) {
+        maze[inky.y][inky.x] = 2;
+        inky.x = 26;
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x-1] !==1) {
+        if (maze[inky.y][inky.x-1] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 2.5 && directionB <= 5) {
+      if (maze[inky.y-1][inky.x] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y-1][inky.x] !==1) {
+        if (maze[inky.y-1][inky.x] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 5 && directionB <= 7.5) {
+      if (maze[inky.y][inky.x+1] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x+1] ==6) {
+        maze[inky.y][inky.x] = 2;
+        inky.x = 1;
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x+1] !==1) {
+        if (maze[inky.y][inky.x+1] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 7.5) {
+      if (maze[inky.y+1][inky.x] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y+1][inky.x] !==1) {
+        if (maze[inky.y+1][inky.x] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    }
+  }
+
   drawMaze();
 
   var Timer = setInterval(myTimer, 1000);
 
   function myTimer() {
-    if (time != 0) {
-      time--;
-      drawMaze();
-    } else {
+
+    time++;
+    drawMaze();
+
+    if (lives = 0){
       sessionStorage.setItem("score",`${score}`);
       document.location.href = 'gameover.html';
     }
