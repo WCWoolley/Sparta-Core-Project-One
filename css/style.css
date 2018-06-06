@@ -29,12 +29,20 @@ body {
   background-size: contain;
 }
 
+.Game-Start-Window {
+  border: 2px solid white;
+  text-align: center;
+  height: 620px;
+  background-image: url(../images/Background-Image.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 table {
   border: 2px solid white;
   width: 80%;
   margin: 0;
   table-layout: fixed;
-  /* background-image: url(../images/Background-Image.png); */
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 13px 10%;
@@ -49,21 +57,13 @@ td {
   border: 1px solid;
 }
 
-.Play {
-  padding: 0;
-  margin: 0;
-  color: white;
-  height: 15px;
-  width: 15px;
-}
-
 .PBtn {
-  padding: 0;
+  padding-left: 10px;
   margin: 0;
   background-color: black;
   border: 1px solid white;
-  height: 100%;
-  width: 100%;
+  height: 40px;
+  width: 150px;
 }
 
 .container1 {
