@@ -477,88 +477,88 @@ $(document).ready(function(){
 
   var clydeMove = setInterval(clydeMove, 250)
 
-  function inkyMove() {
+  function clydeMove() {
     var directionB = Math.random() * 10;
-    if (maze[inky.y-1][inky.x] ==12) {
-      maze[inky.y][inky.x] = 12;
-      inky.y = 11;
-      maze[inky.y][inky.x] = 10;
+    if (maze[clyde.y-1][clyde.x] ==12) {
+      maze[clyde.y][clyde.x] = 12;
+      clyde.y = 11;
+      maze[clyde.y][clyde.x] = 11;
       drawMaze();
     } else if (directionB <= 2.5) {
-      if (maze[inky.y][inky.x-1] ==4) {
-        maze[inky.y][inky.x] = 10;
+      if (maze[clyde.y][clyde.x-1] ==4) {
+        maze[clyde.y][clyde.x] = 11;
         drawMaze();
-      } else if (maze[inky.y][inky.x-1] ==6) {
-        maze[inky.y][inky.x] = 2;
-        inky.x = 26;
-        maze[inky.y][inky.x] = 10;
+      } else if (maze[clyde.y][clyde.x-1] ==6) {
+        maze[clyde.y][clyde.x] = 2;
+        clyde.x = 26;
+        maze[clyde.y][clyde.x] = 11;
         drawMaze();
-      } else if (maze[inky.y][inky.x-1] !==1) {
-        if (maze[inky.y][inky.x-1] ==2) {
-          maze[inky.y][inky.x] = 2;
-          inky.x = inky.x - 1;
-          maze[inky.y][inky.x] = 10;
+      } else if (maze[clyde.y][clyde.x-1] !==1) {
+        if (maze[clyde.y][clyde.x-1] ==2) {
+          maze[clyde.y][clyde.x] = 2;
+          clyde.x = clyde.x - 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         } else {
-          maze[inky.y][inky.x] = 2;
-          inky.x = inky.x - 1;
-          maze[inky.y][inky.x] = 10;
+          maze[clyde.y][clyde.x] = 2;
+          clyde.x = clyde.x - 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         }
       }
     } else if (directionB > 2.5 && directionB <= 5) {
-      if (maze[inky.y-1][inky.x] ==4) {
-        maze[inky.y][inky.x] = 10;
+      if (maze[clyde.y-1][clyde.x] ==4) {
+        maze[clyde.y][clyde.x] = 11;
         drawMaze();
-      } else if (maze[inky.y-1][inky.x] !==1) {
-        if (maze[inky.y-1][inky.x] ==2) {
-          maze[inky.y][inky.x] = 2;
-          inky.y = inky.y - 1;
-          maze[inky.y][inky.x] = 10;
+      } else if (maze[clyde.y-1][clyde.x] !==1) {
+        if (maze[clyde.y-1][clyde.x] ==2) {
+          maze[clyde.y][clyde.x] = 2;
+          clyde.y = clyde.y - 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         } else {
-          maze[inky.y][inky.x] = 2;
-          inky.y = inky.y - 1;
-          maze[inky.y][inky.x] = 10;
+          maze[clyde.y][clyde.x] = 2;
+          clyde.y = clyde.y - 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         }
       }
     } else if (directionB > 5 && directionB <= 7.5) {
-      if (maze[inky.y][inky.x+1] ==4) {
-        maze[inky.y][inky.x] = 10;
+      if (maze[clyde.y][clyde.x+1] ==4) {
+        maze[clyde.y][clyde.x] = 11;
         drawMaze();
-      } else if (maze[inky.y][inky.x+1] ==6) {
-        maze[inky.y][inky.x] = 2;
-        inky.x = 1;
-        maze[inky.y][inky.x] = 10;
+      } else if (maze[clyde.y][clyde.x+1] ==6) {
+        maze[clyde.y][clyde.x] = 2;
+        clyde.x = 1;
+        maze[clyde.y][clyde.x] = 11;
         drawMaze();
-      } else if (maze[inky.y][inky.x+1] !==1) {
-        if (maze[inky.y][inky.x+1] ==2) {
-          maze[inky.y][inky.x] = 2;
-          inky.x = inky.x + 1;
-          maze[inky.y][inky.x] = 10;
+      } else if (maze[clyde.y][clyde.x+1] !==1) {
+        if (maze[clyde.y][clyde.x+1] ==2) {
+          maze[clyde.y][clyde.x] = 2;
+          clyde.x = clyde.x + 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         } else {
-          maze[inky.y][inky.x] = 2;
-          inky.x = inky.x + 1;
-          maze[inky.y][inky.x] = 10;
+          maze[clyde.y][clyde.x] = 2;
+          clyde.x = clyde.x + 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         }
       }
     } else if (directionB > 7.5) {
-      if (maze[inky.y+1][inky.x] ==4) {
-        maze[inky.y][inky.x] = 10;
+      if (maze[clyde.y+1][clyde.x] ==4) {
+        maze[clyde.y][clyde.x] = 11;
         drawMaze();
-      } else if (maze[inky.y+1][inky.x] !==1) {
-        if (maze[inky.y+1][inky.x] ==2) {
-          maze[inky.y][inky.x] = 2;
-          inky.y = inky.y + 1;
-          maze[inky.y][inky.x] = 10;
+      } else if (maze[clyde.y+1][clyde.x] !==1) {
+        if (maze[clyde.y+1][clyde.x] ==2) {
+          maze[clyde.y][clyde.x] = 2;
+          clyde.y = clyde.y + 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         } else {
-          maze[inky.y][inky.x] = 2;
-          inky.y = inky.y + 1;
-          maze[inky.y][inky.x] = 10;
+          maze[clyde.y][clyde.x] = 2;
+          clyde.y = clyde.y + 1;
+          maze[clyde.y][clyde.x] = 11;
           drawMaze();
         }
       }
