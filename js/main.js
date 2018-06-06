@@ -61,7 +61,7 @@ $(document).ready(function(){
 
   var board = $('#Game-Window');
   var score = 0;
-  var lives = 3;
+  var lives = 2;
   var interval;
 
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
       var row = $('<tr class="row"></tr>');
       for (var j = 0; j < maze[i].length; j++) {
         if (maze[i][j] === 0) {
-          var col = $(`<td class="col score1">Score:-${score}</td>`).css("border","none").css("color","white")
+          var col = $(`<td class="col score">Score:-${score}</td>`).css("border","none").css("color","white")
           row.append(col);
         } else if (maze[i][j] === 1) {
           var col = $(`<td class="col wall"></td>`).css("background","white").css("border-color","black")
@@ -96,7 +96,7 @@ $(document).ready(function(){
           var col = $(`<td class="col space"><div class="container3"><div class="pinky"></div></div></td>`).css("background","black").css("border","none");
           row.append(col);
         } else if (maze[i][j] === 8) {
-          var col = $(`<td class="col time1">Time Left:-</td>`).css("border","none").css("color","white")
+          var col = $(`<td class="col time"></td>`).css("border","none").css("color","white")
           row.append(col);
         } else if (maze[i][j] === 9) {
           var col =  $(`<td class="col space"><div class="container3"><div class="blinky"></div></div></td>`).css("background","black").css("border","none");
@@ -111,7 +111,7 @@ $(document).ready(function(){
           var col = $(`<td class="col cage"></td>`).css("background","black").css("border","none")
           row.append(col);
         } else if (maze[i][j] === 13) {
-          var col = $(`<td class="col score1">Lives:-${lives}</td>`).css("border","none").css("color","white")
+          var col = $(`<td class="col lives">Lives:-${lives}</td>`).css("border","none").css("color","white")
           row.append(col);
         }
       }
@@ -598,10 +598,13 @@ $(document).ready(function(){
 
   drawMaze();
 
-  if (lives = 0){
-    sessionStorage.setItem("score",`${score}`);
-    document.location.href = 'gameover.html';
-  }
+  var lifeWatch = setInterval(livesLeft, 1000)
 
+  function livesLeft(){
+    if (lives === 0){
+      sessionStorage.setItem("score",`${score}`);
+      document.location.href = 'gameover.html';
+    };
+  }
 
 });
