@@ -11,6 +11,14 @@ $(document).ready(function(){
         var col = $(`<td class="col end">FINAL SCORE - ${x}</td>`);
         row.append(col);
         cellCount++;
+      } else if (i === 5 && j === 3) {
+        var col = $(`<td class="col end"><button class="PABtn">PLAY AGAIN</button></td>`);
+        row.append(col);
+        cellCount++;
+      } else if (i === 6 && j === 3) {
+        var col = $(`<td class="col end"><button class="MMBtn">MAIN MENU</button></td>`);
+        row.append(col);
+        cellCount++;
       } else {
         var col = $(`<td class="col end"></td>`);
         row.append(col);
@@ -20,10 +28,12 @@ $(document).ready(function(){
     board2.append(row);
   }
 
+  $(".PABtn").click(function(){
+    document.location.href = 'index.html';
+  })
 
-
-
-
-
+  $(".MMBtn").click(function(){
+    document.location.href = 'titlepage.html';
+  })
 
 });

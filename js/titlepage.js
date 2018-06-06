@@ -16,9 +16,9 @@ $(document).ready(function(){
     board3.append(row);
   }
 
-
-
-
+  $(".PBtn").click(function(){
+    document.location.href = 'index.html';
+  })
 
 
 

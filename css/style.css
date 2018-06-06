@@ -66,6 +66,24 @@ td {
   width: 150px;
 }
 
+.PABtn {
+  padding-left: 10px;
+  margin: 0;
+  background-color: black;
+  border: 1px solid white;
+  height: 40px;
+  width: 150px;
+}
+
+.MMBtn {
+  padding-left: 10px;
+  margin: 0;
+  background-color: black;
+  border: 1px solid white;
+  height: 40px;
+  width: 150px;
+}
+
 .container1 {
   margin: 0;
   padding-bottom: 17px;
