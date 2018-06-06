@@ -20,13 +20,29 @@ body {
   color: white;
 }
 
+.Game-Over-Window {
+  border: 2px solid white;
+  text-align: center;
+  height: 620px;
+  background-image: url(../images/game-over.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.Game-Start-Window {
+  border: 2px solid white;
+  text-align: center;
+  height: 620px;
+  background-image: url(../images/Background-Image.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 table {
   border: 2px solid white;
-  width: 100%;
-  margin: auto;
+  width: 80%;
+  margin: 0;
   table-layout: fixed;
-  background-image: url(../images/Background-Image.png) hidden;
-  background-image: url(../images/game-over.jpg) hidden;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 13px 10%;
@@ -41,21 +57,31 @@ td {
   border: 1px solid;
 }
 
-.Play {
-  padding: 0;
-  margin: 0;
-  color: white;
-  height: 15px;
-  width: 15px;
-}
-
 .PBtn {
-  padding: 0;
+  padding-left: 10px;
   margin: 0;
   background-color: black;
   border: 1px solid white;
-  height: 100%;
-  width: 100%;
+  height: 40px;
+  width: 150px;
+}
+
+.PABtn {
+  padding-left: 10px;
+  margin: 0;
+  background-color: black;
+  border: 1px solid white;
+  height: 40px;
+  width: 150px;
+}
+
+.MMBtn {
+  padding-left: 10px;
+  margin: 0;
+  background-color: black;
+  border: 1px solid white;
+  height: 40px;
+  width: 150px;
 }
 
 .container1 {
@@ -68,6 +94,12 @@ td {
   margin: 0;
   padding-bottom: 2%;
   padding-left: 35%;
+}
+
+.container3 {
+  margin: 0;
+  padding-left: 7%;
+  padding-bottom: 80%;
 }
 
 .pacman {
@@ -90,4 +122,63 @@ td {
   background-color: orange;
   border-radius: 50%;
   visibility: visible;
+}
+
+.blinky {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/blinky.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  visibility: visible;
+}
+
+.pinky {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/pinky.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  visibility: visible;
+}
+
+.inky {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/inky.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  visibility: visible;
+}
+
+.clyde {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/clyde.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  visibility: visible;
+}
+
+.end {
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  width: 100%;
+  white-space: nowrap;
+  border: none;
+  color: white;
+  font-size: 20px;
 }
