@@ -66,6 +66,8 @@ $(document).ready(function(){
   var time = 0;
   var interval;
 
+
+
   function drawMaze(){
     document.getElementById(`Game-Window`).innerHTML = "";
     for (var i = 0; i < maze.length; i++) {
@@ -215,7 +217,16 @@ $(document).ready(function(){
       maze[pinky.y][pinky.x] = 7;
       drawMaze();
     } else if (directionB <= 2.5) {
-      if (maze[pinky.y][pinky.x-1] ==4) {
+      if (maze[pinky.y][pinky.x-1] ==5) {
+        maze[pinky.y][pinky.x] = 2;
+        pinky.x = pinky.x - 1;
+        maze[pinky.y][pinky.x] = 7;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pinky.y][pinky.x-1] ==4) {
         maze[pinky.y][pinky.x] = 7;
         drawMaze();
       } else if (maze[pinky.y][pinky.x-1] ==6) {
@@ -224,37 +235,41 @@ $(document).ready(function(){
         maze[pinky.y][pinky.x] = 7;
         drawMaze();
       } else if (maze[pinky.y][pinky.x-1] !==1) {
-        if (maze[pinky.y][pinky.x-1] ==2) {
           maze[pinky.y][pinky.x] = 2;
           pinky.x = pinky.x - 1;
           maze[pinky.y][pinky.x] = 7;
           drawMaze();
-        } else {
-          maze[pinky.y][pinky.x] = 2;
-          pinky.x = pinky.x - 1;
-          maze[pinky.y][pinky.x] = 7;
-          drawMaze();
-        }
       }
     } else if (directionB > 2.5 && directionB <= 5) {
-      if (maze[pinky.y-1][pinky.x] ==4) {
+      if (maze[pinky.y-1][pinky.x] ==5) {
+        maze[pinky.y][pinky.x] = 2;
+        pinky.y = pinky.y - 1;
+        maze[pinky.y][pinky.x] = 7;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pinky.y-1][pinky.x] ==4) {
         maze[pinky.y][pinky.x] = 7;
         drawMaze();
       } else if (maze[pinky.y-1][pinky.x] !==1) {
-        if (maze[pinky.y-1][pinky.x] ==2) {
           maze[pinky.y][pinky.x] = 2;
           pinky.y = pinky.y - 1;
           maze[pinky.y][pinky.x] = 7;
           drawMaze();
-        } else {
-          maze[pinky.y][pinky.x] = 2;
-          pinky.y = pinky.y - 1;
-          maze[pinky.y][pinky.x] = 7;
-          drawMaze();
-        }
       }
     } else if (directionB > 5 && directionB <= 7.5) {
-      if (maze[pinky.y][pinky.x+1] ==4) {
+      if (maze[pinky.y][pinky.x+1] ==5) {
+        maze[pinky.y][pinky.x] = 2;
+        pinky.x = pinky.x + 1;
+        maze[pinky.y][pinky.x] = 7;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pinky.y][pinky.x+1] ==4) {
         maze[pinky.y][pinky.x] = 7;
         drawMaze();
       } else if (maze[pinky.y][pinky.x+1] ==6) {
@@ -263,34 +278,29 @@ $(document).ready(function(){
         maze[pinky.y][pinky.x] = 7;
         drawMaze();
       } else if (maze[pinky.y][pinky.x+1] !==1) {
-        if (maze[pinky.y][pinky.x+1] ==2) {
           maze[pinky.y][pinky.x] = 2;
           pinky.x = pinky.x + 1;
           maze[pinky.y][pinky.x] = 7;
           drawMaze();
-        } else {
-          maze[pinky.y][pinky.x] = 2;
-          pinky.x = pinky.x + 1;
-          maze[pinky.y][pinky.x] = 7;
-          drawMaze();
-        }
       }
     } else if (directionB > 7.5) {
-      if (maze[pinky.y+1][pinky.x] ==4) {
+      if (maze[pinky.y+1][pinky.x] ==5) {
+        maze[pinky.y][pinky.x] = 2;
+        pinky.y = pinky.y + 1;
+        maze[pinky.y][pinky.x] = 7;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pinky.y+1][pinky.x] ==4) {
         maze[pinky.y][pinky.x] = 7;
         drawMaze();
       } else if (maze[pinky.y+1][pinky.x] !==1) {
-        if (maze[pinky.y+1][pinky.x] ==2) {
           maze[pinky.y][pinky.x] = 2;
           pinky.y = pinky.y + 1;
           maze[pinky.y][pinky.x] = 7;
           drawMaze();
-        } else {
-          maze[pinky.y][pinky.x] = 2;
-          pinky.y = pinky.y + 1;
-          maze[pinky.y][pinky.x] = 7;
-          drawMaze();
-        }
       }
     }
   }
@@ -305,7 +315,16 @@ $(document).ready(function(){
       maze[blinky.y][blinky.x] = 9;
       drawMaze();
     } else if (directionB <= 2.5) {
-      if (maze[blinky.y][blinky.x-1] ==4) {
+      if (maze[blinky.y][blinky.x-1] ==5) {
+        maze[blinky.y][blinky.x] = 2;
+        blinky.x = blinky.x - 1;
+        maze[blinky.y][blinky.x] = 9;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[blinky.y][blinky.x-1] ==4) {
         maze[blinky.y][blinky.x] = 9;
         drawMaze();
       } else if (maze[blinky.y][blinky.x-1] ==6) {
@@ -314,37 +333,41 @@ $(document).ready(function(){
         maze[blinky.y][blinky.x] = 9;
         drawMaze();
       } else if (maze[blinky.y][blinky.x-1] !==1) {
-        if (maze[blinky.y][blinky.x-1] ==2) {
           maze[blinky.y][blinky.x] = 2;
           blinky.x = blinky.x - 1;
           maze[blinky.y][blinky.x] = 9;
           drawMaze();
-        } else {
-          maze[blinky.y][blinky.x] = 2;
-          blinky.x = blinky.x - 1;
-          maze[blinky.y][blinky.x] = 9;
-          drawMaze();
-        }
       }
     } else if (directionB > 2.5 && directionB <= 5) {
-      if (maze[blinky.y-1][blinky.x] ==4) {
+      if (maze[blinky.y-1][blinky.x] ==5) {
+        maze[blinky.y][blinky.x] = 2;
+        blinky.y = blinky.y - 1;
+        maze[blinky.y][blinky.x] = 9;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[blinky.y-1][blinky.x] ==4) {
         maze[blinky.y][blinky.x] = 9;
         drawMaze();
       } else if (maze[blinky.y-1][blinky.x] !==1) {
-        if (maze[blinky.y-1][blinky.x] ==2) {
           maze[blinky.y][blinky.x] = 2;
           blinky.y = blinky.y - 1;
           maze[blinky.y][blinky.x] = 9;
           drawMaze();
-        } else {
-          maze[blinky.y][blinky.x] = 2;
-          blinky.y = blinky.y - 1;
-          maze[blinky.y][blinky.x] = 9;
-          drawMaze();
-        }
       }
     } else if (directionB > 5 && directionB <= 7.5) {
-      if (maze[blinky.y][blinky.x+1] ==4) {
+      if (maze[blinky.y][blinky.x+1] ==5) {
+        maze[blinky.y][blinky.x] = 2;
+        blinky.x = blinky.x + 1;
+        maze[blinky.y][blinky.x] = 9;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[blinky.y][blinky.x+1] ==4) {
         maze[blinky.y][blinky.x] = 9;
         drawMaze();
       } else if (maze[blinky.y][blinky.x+1] ==6) {
@@ -353,34 +376,29 @@ $(document).ready(function(){
         maze[blinky.y][blinky.x] = 9;
         drawMaze();
       } else if (maze[blinky.y][blinky.x+1] !==1) {
-        if (maze[blinky.y][blinky.x+1] ==2) {
           maze[blinky.y][blinky.x] = 2;
           blinky.x = blinky.x + 1;
           maze[blinky.y][blinky.x] = 9;
           drawMaze();
-        } else {
-          maze[blinky.y][blinky.x] = 2;
-          blinky.x = blinky.x + 1;
-          maze[blinky.y][blinky.x] = 9;
-          drawMaze();
-        }
       }
     } else if (directionB > 7.5) {
-      if (maze[blinky.y+1][blinky.x] ==4) {
+      if (maze[blinky.y+1][blinky.x] ==5) {
+        maze[blinky.y][blinky.x] = 2;
+        blinky.y = blinky.y + 1;
+        maze[blinky.y][blinky.x] = 9;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[blinky.y+1][blinky.x] ==4) {
         maze[blinky.y][blinky.x] = 9;
         drawMaze();
       } else if (maze[blinky.y+1][blinky.x] !==1) {
-        if (maze[blinky.y+1][blinky.x] ==2) {
           maze[blinky.y][blinky.x] = 2;
           blinky.y = blinky.y + 1;
           maze[blinky.y][blinky.x] = 9;
           drawMaze();
-        } else {
-          maze[blinky.y][blinky.x] = 2;
-          blinky.y = blinky.y + 1;
-          maze[blinky.y][blinky.x] = 9;
-          drawMaze();
-        }
       }
     }
   }
@@ -395,7 +413,16 @@ $(document).ready(function(){
       maze[inky.y][inky.x] = 10;
       drawMaze();
     } else if (directionB <= 2.5) {
-      if (maze[inky.y][inky.x-1] ==4) {
+      if (maze[inky.y][inky.x-1] ==5) {
+        maze[inky.y][inky.x] = 2;
+        inky.x = inky.x - 1;
+        maze[inky.y][inky.x] = 10;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[inky.y][inky.x-1] ==4) {
         maze[inky.y][inky.x] = 10;
         drawMaze();
       } else if (maze[inky.y][inky.x-1] ==6) {
@@ -404,37 +431,41 @@ $(document).ready(function(){
         maze[inky.y][inky.x] = 10;
         drawMaze();
       } else if (maze[inky.y][inky.x-1] !==1) {
-        if (maze[inky.y][inky.x-1] ==2) {
           maze[inky.y][inky.x] = 2;
           inky.x = inky.x - 1;
           maze[inky.y][inky.x] = 10;
           drawMaze();
-        } else {
-          maze[inky.y][inky.x] = 2;
-          inky.x = inky.x - 1;
-          maze[inky.y][inky.x] = 10;
-          drawMaze();
-        }
       }
     } else if (directionB > 2.5 && directionB <= 5) {
-      if (maze[inky.y-1][inky.x] ==4) {
+      if (maze[inky.y-1][inky.x] ==5) {
+        maze[inky.y][inky.x] = 2;
+        inky.y = inky.y - 1;
+        maze[inky.y][inky.x] = 10;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[inky.y-1][inky.x] ==4) {
         maze[inky.y][inky.x] = 10;
         drawMaze();
       } else if (maze[inky.y-1][inky.x] !==1) {
-        if (maze[inky.y-1][inky.x] ==2) {
           maze[inky.y][inky.x] = 2;
           inky.y = inky.y - 1;
           maze[inky.y][inky.x] = 10;
           drawMaze();
-        } else {
-          maze[inky.y][inky.x] = 2;
-          inky.y = inky.y - 1;
-          maze[inky.y][inky.x] = 10;
-          drawMaze();
-        }
       }
     } else if (directionB > 5 && directionB <= 7.5) {
-      if (maze[inky.y][inky.x+1] ==4) {
+      if (maze[inky.y][inky.x+1] ==5) {
+        maze[inky.y][inky.x] = 2;
+        inky.x = inky.x + 1;
+        maze[inky.y][inky.x] = 10;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[inky.y][inky.x+1] ==4) {
         maze[inky.y][inky.x] = 10;
         drawMaze();
       } else if (maze[inky.y][inky.x+1] ==6) {
@@ -443,34 +474,29 @@ $(document).ready(function(){
         maze[inky.y][inky.x] = 10;
         drawMaze();
       } else if (maze[inky.y][inky.x+1] !==1) {
-        if (maze[inky.y][inky.x+1] ==2) {
           maze[inky.y][inky.x] = 2;
           inky.x = inky.x + 1;
           maze[inky.y][inky.x] = 10;
           drawMaze();
-        } else {
-          maze[inky.y][inky.x] = 2;
-          inky.x = inky.x + 1;
-          maze[inky.y][inky.x] = 10;
-          drawMaze();
-        }
       }
     } else if (directionB > 7.5) {
-      if (maze[inky.y+1][inky.x] ==4) {
+      if (maze[inky.y+1][inky.x] ==5) {
+        maze[inky.y][inky.x] = 2;
+        inky.y = inky.y + 1;
+        maze[inky.y][inky.x] = 10;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[inky.y+1][inky.x] ==4) {
         maze[inky.y][inky.x] = 10;
         drawMaze();
       } else if (maze[inky.y+1][inky.x] !==1) {
-        if (maze[inky.y+1][inky.x] ==2) {
           maze[inky.y][inky.x] = 2;
           inky.y = inky.y + 1;
           maze[inky.y][inky.x] = 10;
           drawMaze();
-        } else {
-          maze[inky.y][inky.x] = 2;
-          inky.y = inky.y + 1;
-          maze[inky.y][inky.x] = 10;
-          drawMaze();
-        }
       }
     }
   }
@@ -485,7 +511,16 @@ $(document).ready(function(){
       maze[clyde.y][clyde.x] = 11;
       drawMaze();
     } else if (directionB <= 2.5) {
-      if (maze[clyde.y][clyde.x-1] ==4) {
+      if (maze[clyde.y][clyde.x-1] ==5) {
+        maze[clyde.y][clyde.x] = 2;
+        clyde.x = clyde.x - 1;
+        maze[clyde.y][clyde.x] = 11;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[clyde.y][clyde.x-1] ==4) {
         maze[clyde.y][clyde.x] = 11;
         drawMaze();
       } else if (maze[clyde.y][clyde.x-1] ==6) {
@@ -494,37 +529,41 @@ $(document).ready(function(){
         maze[clyde.y][clyde.x] = 11;
         drawMaze();
       } else if (maze[clyde.y][clyde.x-1] !==1) {
-        if (maze[clyde.y][clyde.x-1] ==2) {
           maze[clyde.y][clyde.x] = 2;
           clyde.x = clyde.x - 1;
           maze[clyde.y][clyde.x] = 11;
           drawMaze();
-        } else {
-          maze[clyde.y][clyde.x] = 2;
-          clyde.x = clyde.x - 1;
-          maze[clyde.y][clyde.x] = 11;
-          drawMaze();
-        }
       }
     } else if (directionB > 2.5 && directionB <= 5) {
-      if (maze[clyde.y-1][clyde.x] ==4) {
+      if (maze[clyde.y-1][clyde.x] ==5) {
+        maze[clyde.y][clyde.x] = 2;
+        clyde.y = clyde.y - 1;
+        maze[clyde.y][clyde.x] = 11;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[clyde.y-1][clyde.x] ==4) {
         maze[clyde.y][clyde.x] = 11;
         drawMaze();
       } else if (maze[clyde.y-1][clyde.x] !==1) {
-        if (maze[clyde.y-1][clyde.x] ==2) {
           maze[clyde.y][clyde.x] = 2;
           clyde.y = clyde.y - 1;
           maze[clyde.y][clyde.x] = 11;
           drawMaze();
-        } else {
-          maze[clyde.y][clyde.x] = 2;
-          clyde.y = clyde.y - 1;
-          maze[clyde.y][clyde.x] = 11;
-          drawMaze();
-        }
       }
     } else if (directionB > 5 && directionB <= 7.5) {
-      if (maze[clyde.y][clyde.x+1] ==4) {
+      if (maze[clyde.y][clyde.x+1] ==5) {
+        maze[clyde.y][clyde.x] = 2;
+        clyde.x = clyde.x + 1;
+        maze[clyde.y][clyde.x] = 11;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[clyde.y][clyde.x+1] ==4) {
         maze[clyde.y][clyde.x] = 11;
         drawMaze();
       } else if (maze[clyde.y][clyde.x+1] ==6) {
@@ -533,34 +572,29 @@ $(document).ready(function(){
         maze[clyde.y][clyde.x] = 11;
         drawMaze();
       } else if (maze[clyde.y][clyde.x+1] !==1) {
-        if (maze[clyde.y][clyde.x+1] ==2) {
           maze[clyde.y][clyde.x] = 2;
           clyde.x = clyde.x + 1;
           maze[clyde.y][clyde.x] = 11;
           drawMaze();
-        } else {
-          maze[clyde.y][clyde.x] = 2;
-          clyde.x = clyde.x + 1;
-          maze[clyde.y][clyde.x] = 11;
-          drawMaze();
-        }
       }
     } else if (directionB > 7.5) {
-      if (maze[clyde.y+1][clyde.x] ==4) {
+      if (maze[clyde.y+1][clyde.x] ==5) {
+        maze[clyde.y][clyde.x] = 2;
+        clyde.y = clyde.y + 1;
+        maze[clyde.y][clyde.x] = 11;
+        pacman.x = 14;
+        pacman.y = 23;
+        lives--;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[clyde.y+1][clyde.x] ==4) {
         maze[clyde.y][clyde.x] = 11;
         drawMaze();
       } else if (maze[clyde.y+1][clyde.x] !==1) {
-        if (maze[clyde.y+1][clyde.x] ==2) {
           maze[clyde.y][clyde.x] = 2;
           clyde.y = clyde.y + 1;
           maze[clyde.y][clyde.x] = 11;
           drawMaze();
-        } else {
-          maze[clyde.y][clyde.x] = 2;
-          clyde.y = clyde.y + 1;
-          maze[clyde.y][clyde.x] = 11;
-          drawMaze();
-        }
       }
     }
   }
