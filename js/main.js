@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var maze = [
-    [3,3,0,3,7,3,3,3,3,3,3,8,3,3,9,3,3,3,3,3,3,3,3,3,3,3,3,3],
+    [3,3,0,3,7,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
@@ -15,7 +15,7 @@ $(document).ready(function(){
     [1,1,1,1,1,1,2,1,1,2,2,2,2,2,2,2,2,2,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,1,4,4,4,4,1,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,3,3,3,3,3,3,1,2,1,1,2,1,1,1,1,1,1],
-    [6,2,2,2,2,2,2,2,2,2,1,3,3,3,3,3,3,1,2,2,2,2,2,2,2,2,2,6],
+    [6,2,2,2,2,2,2,2,2,2,1,3,9,7,10,11,3,1,2,2,2,2,2,2,2,2,2,6],
     [1,1,1,1,1,1,2,1,1,2,1,3,3,3,3,3,3,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,2,2,2,2,2,2,2,2,2,1,1,2,1,1,1,1,1,1],
@@ -42,7 +42,7 @@ $(document).ready(function(){
   var board = $('#Game-Window');
   var cellCount = 0;
   var score = 0;
-  var time = 3;
+  var time = 60;
   var interval;
 
   function drawMaze(){
@@ -51,7 +51,7 @@ $(document).ready(function(){
       var row = $('<tr class="row"></tr>');
       for (var j = 0; j < maze[i].length; j++) {
         if (maze[i][j] === 0) {
-          var col = $(`<td class="col score1">Score:</td>`).css("border","none").css("color","white")
+          var col = $(`<td class="col score1">Score:-${score}</td>`).css("border","none").css("color","white")
           row.append(col);
         } else if (maze[i][j] === 1) {
           var col = $(`<td class="col wall${cellCount}"></td>`).css("background","white").css("border-color","black")
@@ -72,13 +72,19 @@ $(document).ready(function(){
           var col = $(`<td class="col exit${cellCount}"></td>`).css("background","black").css("border","none")
           row.append(col);
         } else if (maze[i][j] === 7) {
-          var col = $(`<td class="col score2">-${score}</td>`).css("border","none").css("color","white")
+          var col = $(`<td class="col space${cellCount}"><div class="container3"><div class="pinky"></div></div></td>`).css("background","black").css("border","none");
           row.append(col);
         } else if (maze[i][j] === 8) {
-          var col = $(`<td class="col time1">Time Left:</td>`).css("border","none").css("color","white")
+          var col = $(`<td class="col time1">Time Left:-${time}</td>`).css("border","none").css("color","white")
           row.append(col);
         } else if (maze[i][j] === 9) {
-          var col = $(`<td class="col time2">-${time}</td>`).css("border","none").css("color","white");
+          var col =  $(`<td class="col space${cellCount}"><div class="container3"><div class="blinky"></div></div></td>`).css("background","black").css("border","none");
+          row.append(col);
+        } else if (maze[i][j] === 10) {
+          var col =  $(`<td class="col space${cellCount}"><div class="container3"><div class="inky"></div></div></td>`).css("background","black").css("border","none");
+          row.append(col);
+        } else if (maze[i][j] === 11) {
+          var col =  $(`<td class="col space${cellCount}"><div class="container3"><div class="clyde"></div></div></td>`).css("background","black").css("border","none");
           row.append(col);
         }
         cellCount++;
@@ -92,6 +98,9 @@ $(document).ready(function(){
       if (maze[pacman.y][pacman.x-1] ==6) {
         maze[pacman.y][pacman.x] = 3;
         pacman.x = 26;
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pacman.y][pacman.x-1] ==4) {
         maze[pacman.y][pacman.x] = 5;
         drawMaze();
       } else if (maze[pacman.y][pacman.x-1] !==1) {
@@ -109,7 +118,10 @@ $(document).ready(function(){
         }
       }
     } else if ((e.keyCode === 38)) {
-      if (maze[pacman.y-1][pacman.x] !==1) {
+      if (maze[pacman.y-1][pacman.x] ==4) {
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pacman.y-1][pacman.x] !==1) {
         if (maze[pacman.y-1][pacman.x] ==2) {
           maze[pacman.y][pacman.x] = 3;
           pacman.y = pacman.y - 1;
@@ -124,7 +136,10 @@ $(document).ready(function(){
         }
       }
     } else if ((e.keyCode === 39)) {
-      if (maze[pacman.y][pacman.x+1] ==6) {
+      if (maze[pacman.y][pacman.x+1] ==4) {
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pacman.y][pacman.x+1] ==6) {
         maze[pacman.y][pacman.x] = 3;
         pacman.x = 1;
         maze[pacman.y][pacman.x] = 5;
@@ -144,7 +159,10 @@ $(document).ready(function(){
         }
       }
     } else if ((e.keyCode === 40)) {
-      if (maze[pacman.y+1][pacman.x] !==1) {
+      if (maze[pacman.y+1][pacman.x] ==4) {
+        maze[pacman.y][pacman.x] = 5;
+        drawMaze();
+      } else if (maze[pacman.y+1][pacman.x] !==1) {
         if (maze[pacman.y+1][pacman.x] ==2) {
           maze[pacman.y][pacman.x] = 3;
           pacman.y = pacman.y + 1;

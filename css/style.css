@@ -78,6 +78,12 @@ td {
   padding-left: 35%;
 }
 
+.container3 {
+  margin: 0;
+  padding-left: 7%;
+  padding-bottom: 80%;
+}
+
 .pacman {
   margin: 0;
   padding: 0;
@@ -97,6 +103,54 @@ td {
   width: 5px;
   background-color: orange;
   border-radius: 50%;
+  visibility: visible;
+}
+
+.blinky {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/blinky.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  visibility: visible;
+}
+
+.pinky {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/pinky.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  visibility: visible;
+}
+
+.inky {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/inky.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  visibility: visible;
+}
+
+.clyde {
+  margin: 0;
+  padding: 0;
+  height:18px;
+  width:18px;
+  background-image: url(../images/clyde.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
   visibility: visible;
 }
 
