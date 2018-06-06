@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var maze = [
-    [3,3,0,3,7,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
+    [3,3,0,3,3,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1],
     [1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1],
@@ -14,9 +14,9 @@ $(document).ready(function(){
     [1,1,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,2,2,2,2,2,2,2,2,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,1,4,4,4,4,1,1,2,1,1,2,1,1,1,1,1,1],
-    [1,1,1,1,1,1,2,1,1,2,1,3,3,3,3,3,3,1,2,1,1,2,1,1,1,1,1,1],
-    [6,2,2,2,2,2,2,2,2,2,1,3,9,7,10,11,3,1,2,2,2,2,2,2,2,2,2,6],
-    [1,1,1,1,1,1,2,1,1,2,1,3,3,3,3,3,3,1,2,1,1,2,1,1,1,1,1,1],
+    [1,1,1,1,1,1,2,1,1,2,1,12,12,12,12,12,12,1,2,1,1,2,1,1,1,1,1,1],
+    [6,2,2,2,2,2,2,2,2,2,1,12,9,7,10,11,12,1,2,2,2,2,2,2,2,2,2,6],
+    [1,1,1,1,1,1,2,1,1,2,1,12,12,12,12,12,12,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,2,2,2,2,2,2,2,2,2,1,1,2,1,1,1,1,1,1],
     [1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1],
@@ -39,10 +39,25 @@ $(document).ready(function(){
     y: 23
   }
 
+  var blinky = {
+    x: 12,
+    y: 14
+  }
+
+  var pinky = {
+    x: 13,
+    y: 14
+  }
+
+  var inky = {
+    x: 14,
+    y: 14
+  }
+
   var board = $('#Game-Window');
   var cellCount = 0;
   var score = 0;
-  var time = 60;
+  var time = 45;
   var interval;
 
   function drawMaze(){
@@ -60,7 +75,7 @@ $(document).ready(function(){
           var col = $(`<td class="col space${cellCount}"><div class="container2"><div class="coin"></div></div></td>`).css("border","none")
           row.append(col);
         } else if (maze[i][j] === 3) {
-          var col = $(`<td class="col cage${cellCount}"></td>`).css("background","black").css("border","none")
+          var col = $(`<td class="col blank${cellCount}"></td>`).css("background","black").css("border","none")
           row.append(col);
         } else if (maze[i][j] === 4) {
           var col = $(`<td class="col door${cellCount}"></td>`).css("background","black")
@@ -85,6 +100,9 @@ $(document).ready(function(){
           row.append(col);
         } else if (maze[i][j] === 11) {
           var col =  $(`<td class="col space${cellCount}"><div class="container3"><div class="clyde"></div></div></td>`).css("background","black").css("border","none");
+          row.append(col);
+        } else if (maze[i][j] === 12) {
+          var col = $(`<td class="col cage${cellCount}"></td>`).css("background","black").css("border","none")
           row.append(col);
         }
         cellCount++;
@@ -178,9 +196,279 @@ $(document).ready(function(){
     }
   }
 
+  var pinkyMove = setInterval(pinkyMove, 250)
+
+  function pinkyMove() {
+    var directionB = Math.random() * 10;
+    if (maze[pinky.y-1][pinky.x] ==12) {
+      maze[pinky.y][pinky.x] = 12;
+      pinky.y = 11;
+      maze[pinky.y][pinky.x] = 7;
+      drawMaze();
+    } else if (directionB <= 2.5) {
+      if (maze[pinky.y][pinky.x-1] ==4) {
+        maze[pinky.y][pinky.x] = 7;
+        drawMaze();
+      } else if (maze[pinky.y][pinky.x-1] ==6) {
+        maze[pinky.y][pinky.x] = 2;
+        pinky.x = 26;
+        maze[pinky.y][pinky.x] = 7;
+        drawMaze();
+      } else if (maze[pinky.y][pinky.x-1] !==1) {
+        if (maze[pinky.y][pinky.x-1] ==2) {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.x = pinky.x - 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        } else {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.x = pinky.x - 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 2.5 && directionB <= 5) {
+      if (maze[pinky.y-1][pinky.x] ==4) {
+        maze[pinky.y][pinky.x] = 7;
+        drawMaze();
+      } else if (maze[pinky.y-1][pinky.x] !==1) {
+        if (maze[pinky.y-1][pinky.x] ==2) {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.y = pinky.y - 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        } else {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.y = pinky.y - 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 5 && directionB <= 7.5) {
+      if (maze[pinky.y][pinky.x+1] ==4) {
+        maze[pinky.y][pinky.x] = 7;
+        drawMaze();
+      } else if (maze[pinky.y][pinky.x+1] ==6) {
+        maze[pinky.y][pinky.x] = 2;
+        pinky.x = 1;
+        maze[pinky.y][pinky.x] = 7;
+        drawMaze();
+      } else if (maze[pinky.y][pinky.x+1] !==1) {
+        if (maze[pinky.y][pinky.x+1] ==2) {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.x = pinky.x + 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        } else {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.x = pinky.x + 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 7.5) {
+      if (maze[pinky.y+1][pinky.x] ==4) {
+        maze[pinky.y][pinky.x] = 7;
+        drawMaze();
+      } else if (maze[pinky.y+1][pinky.x] !==1) {
+        if (maze[pinky.y+1][pinky.x] ==2) {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.y = pinky.y + 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        } else {
+          maze[pinky.y][pinky.x] = 2;
+          pinky.y = pinky.y + 1;
+          maze[pinky.y][pinky.x] = 7;
+          drawMaze();
+        }
+      }
+    }
+  }
+
+  var blinkyMove = setInterval(blinkyMove, 250)
+
+  function blinkyMove() {
+    var directionB = Math.random() * 10;
+    if (maze[blinky.y-1][blinky.x] ==12) {
+      maze[blinky.y][blinky.x] = 12;
+      blinky.y = 11;
+      maze[blinky.y][blinky.x] = 9;
+      drawMaze();
+    } else if (directionB <= 2.5) {
+      if (maze[blinky.y][blinky.x-1] ==4) {
+        maze[blinky.y][blinky.x] = 9;
+        drawMaze();
+      } else if (maze[blinky.y][blinky.x-1] ==6) {
+        maze[blinky.y][blinky.x] = 2;
+        blinky.x = 26;
+        maze[blinky.y][blinky.x] = 9;
+        drawMaze();
+      } else if (maze[blinky.y][blinky.x-1] !==1) {
+        if (maze[blinky.y][blinky.x-1] ==2) {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.x = blinky.x - 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        } else {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.x = blinky.x - 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 2.5 && directionB <= 5) {
+      if (maze[blinky.y-1][blinky.x] ==4) {
+        maze[blinky.y][blinky.x] = 9;
+        drawMaze();
+      } else if (maze[blinky.y-1][blinky.x] !==1) {
+        if (maze[blinky.y-1][blinky.x] ==2) {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.y = blinky.y - 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        } else {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.y = blinky.y - 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 5 && directionB <= 7.5) {
+      if (maze[blinky.y][blinky.x+1] ==4) {
+        maze[blinky.y][blinky.x] = 9;
+        drawMaze();
+      } else if (maze[blinky.y][blinky.x+1] ==6) {
+        maze[blinky.y][blinky.x] = 2;
+        blinky.x = 1;
+        maze[blinky.y][blinky.x] = 9;
+        drawMaze();
+      } else if (maze[blinky.y][blinky.x+1] !==1) {
+        if (maze[blinky.y][blinky.x+1] ==2) {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.x = blinky.x + 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        } else {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.x = blinky.x + 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 7.5) {
+      if (maze[blinky.y+1][blinky.x] ==4) {
+        maze[blinky.y][blinky.x] = 9;
+        drawMaze();
+      } else if (maze[blinky.y+1][blinky.x] !==1) {
+        if (maze[blinky.y+1][blinky.x] ==2) {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.y = blinky.y + 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        } else {
+          maze[blinky.y][blinky.x] = 2;
+          blinky.y = blinky.y + 1;
+          maze[blinky.y][blinky.x] = 9;
+          drawMaze();
+        }
+      }
+    }
+  }
+
+  var inkyMove = setInterval(inkyMove, 250)
+
+  function inkyMove() {
+    var directionB = Math.random() * 10;
+    if (maze[inky.y-1][inky.x] ==12) {
+      maze[inky.y][inky.x] = 12;
+      inky.y = 11;
+      maze[inky.y][inky.x] = 10;
+      drawMaze();
+    } else if (directionB <= 2.5) {
+      if (maze[inky.y][inky.x-1] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x-1] ==6) {
+        maze[inky.y][inky.x] = 2;
+        inky.x = 26;
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x-1] !==1) {
+        if (maze[inky.y][inky.x-1] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 2.5 && directionB <= 5) {
+      if (maze[inky.y-1][inky.x] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y-1][inky.x] !==1) {
+        if (maze[inky.y-1][inky.x] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y - 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 5 && directionB <= 7.5) {
+      if (maze[inky.y][inky.x+1] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x+1] ==6) {
+        maze[inky.y][inky.x] = 2;
+        inky.x = 1;
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y][inky.x+1] !==1) {
+        if (maze[inky.y][inky.x+1] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.x = inky.x + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    } else if (directionB > 7.5) {
+      if (maze[inky.y+1][inky.x] ==4) {
+        maze[inky.y][inky.x] = 10;
+        drawMaze();
+      } else if (maze[inky.y+1][inky.x] !==1) {
+        if (maze[inky.y+1][inky.x] ==2) {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        } else {
+          maze[inky.y][inky.x] = 2;
+          inky.y = inky.y + 1;
+          maze[inky.y][inky.x] = 10;
+          drawMaze();
+        }
+      }
+    }
+  }
+
   drawMaze();
 
-  var myVar = setInterval(myTimer, 1000);
+  var Timer = setInterval(myTimer, 1000);
 
   function myTimer() {
     if (time != 0) {
