@@ -63,6 +63,7 @@ $(document).ready(function(){
   var score = 0;
   var lives = 2;
   var interval;
+  var directionPM = 1;
 
 
 
@@ -87,7 +88,15 @@ $(document).ready(function(){
           var col = $(`<td class="col door"></td>`).css("background","black")
           row.append(col);
         } else if (maze[i][j] === 5) {
-          var col = $(`<td class="col space"><div class="container1"><div class="pacman"></div></div></td>`).css("background","black").css("border","none")
+          if (directionPM == 1) {
+            var col = $(`<td class="col space"><div class="container1"><div class="pacman"></div></div></td>`).css("background","black").css("border","none").css("transform","rotate(180deg)");
+          } else if (directionPM == 2) {
+            var col = $(`<td class="col space"><div class="container1"><div class="pacman"></div></div></td>`).css("background","black").css("border","none").css("transform","rotate(270deg)");
+          } else if (directionPM == 3) {
+            var col = $(`<td class="col space"><div class="container1"><div class="pacman"></div></div></td>`).css("background","black").css("border","none").css("transform","rotate(0deg)");
+          } else if (directionPM == 4) {
+            var col = $(`<td class="col space"><div class="container1"><div class="pacman"></div></div></td>`).css("background","black").css("border","none").css("transform","rotate(90deg)");
+          }
           row.append(col);
         } else if (maze[i][j] === 6) {
           var col = $(`<td class="col exit"></td>`).css("background","black").css("border","none")
@@ -118,8 +127,6 @@ $(document).ready(function(){
       board.append(row);
     }
   }
-
-  var directionPM = 1;
 
   document.onkeydown = function(e){
     if ((e.keyCode === 37)) {
@@ -166,6 +173,7 @@ $(document).ready(function(){
         }
       }
     } else if (directionPM == 2) {
+      $(".pacman").css("transform","rotate(270deg)");
       if (maze[pacman.y-1][pacman.x] ==7 || maze[pacman.y-1][pacman.x] ==9 || maze[pacman.y-1][pacman.x] ==10 || maze[pacman.y-1][pacman.x] ==11) {
         pacman.x = 14;
         pacman.y = 23;
@@ -190,6 +198,7 @@ $(document).ready(function(){
         }
       }
     } else if (directionPM == 3) {
+      $(".pacman").css("transform","rotate(0deg)");
       if (maze[pacman.y][pacman.x+1] ==7 || maze[pacman.y][pacman.x+1] ==9 || maze[pacman.y][pacman.x+1] ==10 || maze[pacman.y][pacman.x+1] ==11) {
         pacman.x = 14;
         pacman.y = 23;
@@ -219,6 +228,7 @@ $(document).ready(function(){
         }
       }
     } else if (directionPM == 4) {
+      $(".pacman").css("transform","rotate(90deg)");
       if (maze[pacman.y+1][pacman.x] ==7 || maze[pacman.y+1][pacman.x] ==9 || maze[pacman.y+1][pacman.x] ==10 || maze[pacman.y+1][pacman.x] ==11) {
         pacman.x = 14;
         pacman.y = 23;
