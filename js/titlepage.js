@@ -17,7 +17,7 @@ $(document).ready(function(){
   }
 
   $(".PBtn").click(function(){
-    document.location.href = 'index.html';
+    document.location.href = 'game.html';
   })
 
 

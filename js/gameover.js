@@ -24,11 +24,11 @@ $(document).ready(function(){
   }
 
   $(".PABtn").click(function(){
-    document.location.href = 'index.html';
+    document.location.href = 'game.html';
   })
 
   $(".MMBtn").click(function(){
-    document.location.href = 'titlepage.html';
+    document.location.href = 'index.html';
   })
 
 });
