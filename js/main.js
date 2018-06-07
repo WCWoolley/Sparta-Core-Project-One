@@ -119,8 +119,24 @@ $(document).ready(function(){
     }
   }
 
+  var directionPM = 1;
+
   document.onkeydown = function(e){
     if ((e.keyCode === 37)) {
+      directionPM = 1;
+    } else if ((e.keyCode === 38)) {
+      directionPM = 2;
+    } else if ((e.keyCode === 39)) {
+      directionPM = 3;
+    } else if ((e.keyCode === 40)) {
+      directionPM = 4;
+    }
+  }
+
+  var pacMove = setInterval(pacMove, 400)
+
+  function pacMove() {
+    if (directionPM == 1) {
       if (maze[pacman.y][pacman.x-1] ==6) {
         maze[pacman.y][pacman.x] = 3;
         pacman.x = 26;
@@ -143,7 +159,7 @@ $(document).ready(function(){
           drawMaze();
         }
       }
-    } else if ((e.keyCode === 38)) {
+    } else if (directionPM == 2) {
       if (maze[pacman.y-1][pacman.x] ==4) {
         maze[pacman.y][pacman.x] = 5;
         drawMaze();
@@ -161,7 +177,7 @@ $(document).ready(function(){
           drawMaze();
         }
       }
-    } else if ((e.keyCode === 39)) {
+    } else if (directionPM == 3) {
       if (maze[pacman.y][pacman.x+1] ==4) {
         maze[pacman.y][pacman.x] = 5;
         drawMaze();
@@ -184,7 +200,7 @@ $(document).ready(function(){
           drawMaze();
         }
       }
-    } else if ((e.keyCode === 40)) {
+    } else if (directionPM == 4) {
       if (maze[pacman.y+1][pacman.x] ==4) {
         maze[pacman.y][pacman.x] = 5;
         drawMaze();
@@ -320,7 +336,6 @@ $(document).ready(function(){
       maze[blinky.y][blinky.x] = 12;
       blinky.y = 11;
       maze[blinky.y][blinky.x] = 9;
-      drawMaze();
     } else if (directionB <= 2.5) {
       if (maze[blinky.y][blinky.x-1] ==5) {
         maze[blinky.y][blinky.x] = 2;
@@ -330,21 +345,17 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[blinky.y][blinky.x-1] ==6) {
         maze[blinky.y][blinky.x] = 2;
         blinky.x = 26;
         maze[blinky.y][blinky.x] = 9;
-        drawMaze();
       } else if (maze[blinky.y][blinky.x-1] ==1) {
         maze[blinky.y][blinky.x] = 9;
         directionB = Math.random() * 10;
-        drawMaze();
       } else if (maze[blinky.y][blinky.x-1] !==1) {
         maze[blinky.y][blinky.x] = 2;
         blinky.x = blinky.x - 1;
         maze[blinky.y][blinky.x] = 9;
-        drawMaze();
       }
     } else if (directionB > 2.5 && directionB <= 5) {
       if (maze[blinky.y-1][blinky.x] ==5) {
@@ -355,16 +366,13 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[blinky.y-1][blinky.x] ==1) {
         maze[blinky.y][blinky.x] = 9;
         directionB = Math.random() * 10;
-        drawMaze();
       } else if (maze[blinky.y-1][blinky.x] !==1) {
         maze[blinky.y][blinky.x] = 2;
         blinky.y = blinky.y - 1;
         maze[blinky.y][blinky.x] = 9;
-        drawMaze();
       }
     } else if (directionB > 5 && directionB <= 7.5) {
       if (maze[blinky.y][blinky.x+1] ==5) {
@@ -375,21 +383,17 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[blinky.y][blinky.x+1] ==6) {
         maze[blinky.y][blinky.x] = 2;
         blinky.x = 1;
         maze[blinky.y][blinky.x] = 9;
-        drawMaze();
       } else if (maze[blinky.y][blinky.x+1] ==1) {
         maze[blinky.y][blinky.x] = 9;
         directionB = Math.random() * 10;
-        drawMaze();
       } else if (maze[blinky.y][blinky.x+1] !==1) {
         maze[blinky.y][blinky.x] = 2;
         blinky.x = blinky.x + 1;
         maze[blinky.y][blinky.x] = 9;
-        drawMaze();
       }
     } else if (directionB > 7.5) {
       if (maze[blinky.y+1][blinky.x] ==5) {
@@ -400,20 +404,16 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[blinky.y+1][blinky.x] ==4) {
         maze[blinky.y][blinky.x] = 9;
         directionB = Math.random() * 10;
-        drawMaze();
       } else if (maze[blinky.y+1][blinky.x] ==1) {
         maze[blinky.y][blinky.x] = 9;
         directionB = Math.random() * 10;
-        drawMaze();
       } else if (maze[blinky.y+1][blinky.x] !==1) {
         maze[blinky.y][blinky.x] = 2;
         blinky.y = blinky.y + 1;
         maze[blinky.y][blinky.x] = 9;
-        drawMaze();
       }
     }
   }
@@ -427,7 +427,6 @@ $(document).ready(function(){
       maze[inky.y][inky.x] = 12;
       inky.y = 11;
       maze[inky.y][inky.x] = 10;
-      drawMaze();
     } else if (directionI <= 2.5) {
       if (maze[inky.y][inky.x-1] ==5) {
         maze[inky.y][inky.x] = 2;
@@ -437,21 +436,17 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[inky.y][inky.x-1] ==6) {
         maze[inky.y][inky.x] = 2;
         inky.x = 26;
         maze[inky.y][inky.x] = 10;
-        drawMaze();
       } else if (maze[inky.y][inky.x-1] ==1) {
         maze[inky.y][inky.x] = 10;
         directionI = Math.random() * 10;
-        drawMaze();
       } else if (maze[inky.y][inky.x-1] !==1) {
         maze[inky.y][inky.x] = 2;
         inky.x = inky.x - 1;
         maze[inky.y][inky.x] = 10;
-        drawMaze();
       }
     } else if (directionI > 2.5 && directionI <= 5) {
       if (maze[inky.y-1][inky.x] ==5) {
@@ -462,16 +457,13 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[inky.y-1][inky.x] ==1) {
         maze[inky.y][inky.x] = 10;
         directionI = Math.random() * 10;
-        drawMaze();
       } else if (maze[inky.y-1][inky.x] !==1) {
         maze[inky.y][inky.x] = 2;
         inky.y = inky.y - 1;
         maze[inky.y][inky.x] = 10;
-        drawMaze();
       }
     } else if (directionI > 5 && directionI <= 7.5) {
       if (maze[inky.y][inky.x+1] ==5) {
@@ -482,21 +474,17 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[inky.y][inky.x+1] ==6) {
         maze[inky.y][inky.x] = 2;
         inky.x = 1;
         maze[inky.y][inky.x] = 10;
-        drawMaze();
       } else if (maze[inky.y][inky.x+1] ==1) {
         maze[inky.y][inky.x] = 10;
         directionI = Math.random() * 10;
-        drawMaze();
       } else if (maze[inky.y][inky.x+1] !==1) {
         maze[inky.y][inky.x] = 2;
         inky.x = inky.x + 1;
         maze[inky.y][inky.x] = 10;
-        drawMaze();
       }
     } else if (directionI > 7.5) {
       if (maze[inky.y+1][inky.x] ==5) {
@@ -507,20 +495,16 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[inky.y+1][inky.x] ==4) {
         maze[inky.y][inky.x] = 10;
         directionI = Math.random() * 10;
-        drawMaze();
       } else if (maze[inky.y+1][inky.x] ==1) {
         maze[inky.y][inky.x] = 10;
         directionI = Math.random() * 10;
-        drawMaze();
       } else if (maze[inky.y+1][inky.x] !==1) {
         maze[inky.y][inky.x] = 2;
         inky.y = inky.y + 1;
         maze[inky.y][inky.x] = 10;
-        drawMaze();
       }
     }
   }
@@ -534,7 +518,6 @@ $(document).ready(function(){
       maze[clyde.y][clyde.x] = 12;
       clyde.y = 11;
       maze[clyde.y][clyde.x] = 11;
-      drawMaze();
     } else if (directionC <= 2.5) {
       if (maze[clyde.y][clyde.x-1] ==5) {
         maze[clyde.y][clyde.x] = 2;
@@ -544,21 +527,17 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[clyde.y][clyde.x-1] ==6) {
         maze[clyde.y][clyde.x] = 2;
         clyde.x = 26;
         maze[clyde.y][clyde.x] = 11;
-        drawMaze();
       } else if (maze[clyde.y][clyde.x-1] ==1) {
         maze[clyde.y][clyde.x] = 11;
         directionC = Math.random() * 10;
-        drawMaze();
       } else if (maze[clyde.y][clyde.x-1] !==1) {
         maze[clyde.y][clyde.x] = 2;
         clyde.x = clyde.x - 1;
         maze[clyde.y][clyde.x] = 11;
-        drawMaze();
       }
     } else if (directionC > 2.5 && directionC <= 5) {
       if (maze[clyde.y-1][clyde.x] ==5) {
@@ -569,16 +548,13 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[clyde.y-1][clyde.x] ==1) {
         maze[clyde.y][clyde.x] = 11;
         directionC = Math.random() * 10;
-        drawMaze();
       } else if (maze[clyde.y-1][clyde.x] !==1) {
         maze[clyde.y][clyde.x] = 2;
         clyde.y = clyde.y - 1;
         maze[clyde.y][clyde.x] = 11;
-        drawMaze();
       }
     } else if (directionC > 5 && directionC <= 7.5) {
       if (maze[clyde.y][clyde.x+1] ==5) {
@@ -589,21 +565,17 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[clyde.y][clyde.x+1] ==6) {
         maze[clyde.y][clyde.x] = 2;
         clyde.x = 1;
         maze[clyde.y][clyde.x] = 11;
-        drawMaze();
       } else if (maze[clyde.y][clyde.x+1] ==1) {
         maze[clyde.y][clyde.x] = 11;
         directionC = Math.random() * 10;
-        drawMaze();
       } else if (maze[clyde.y][clyde.x+1] !==1) {
         maze[clyde.y][clyde.x] = 2;
         clyde.x = clyde.x + 1;
         maze[clyde.y][clyde.x] = 11;
-        drawMaze();
       }
     } else if (directionC > 7.5) {
       if (maze[clyde.y+1][clyde.x] ==5) {
@@ -614,20 +586,16 @@ $(document).ready(function(){
         pacman.y = 23;
         lives--;
         maze[pacman.y][pacman.x] = 5;
-        drawMaze();
       } else if (maze[clyde.y+1][clyde.x] ==4) {
         maze[clyde.y][clyde.x] = 11;
         directionC = Math.random() * 10;
-        drawMaze();
       } else if (maze[clyde.y+1][clyde.x] ==1) {
         maze[clyde.y][clyde.x] = 11;
         directionC = Math.random() * 10;
-        drawMaze();
       } else if (maze[clyde.y+1][clyde.x] !==1) {
         maze[clyde.y][clyde.x] = 2;
         clyde.y = clyde.y + 1;
         maze[clyde.y][clyde.x] = 11;
-        drawMaze();
       }
     }
   }
