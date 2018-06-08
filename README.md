@@ -4,11 +4,11 @@
 ## Sparta Pac-Man
 Solo project to a build a game from scratch using HTML, CSS and JavaScript. Intended to mimic pac-man as closely as possible/
 
-##Installation
+## Installation
 
-Download via the zip file or by cloning the Repo from Github by clicking the green button labelled 'Clone or Download' [here](https://github.com/WCWoolley/Sparta-Core-Project-One) and open index.html in your browser. 
+Download via the zip file or by cloning the Repo from Github by clicking the green button labelled 'Clone or Download' [here](https://github.com/WCWoolley/Sparta-Core-Project-One) and open index.html in your browser.
 
-##Challenges
+## Challenges
 
 The two big sticking points for this project were collisions and movement.  
 
@@ -19,10 +19,10 @@ The second problem came about from building the maze like this. Everything was m
 My fitst thought was to use a while loop to manage the direction but the game consistently crashed from attempting that, it likely would have worked with tweaking but I found a method I prefered. Since the map was being updated once a second or so to track positioning I thought to use an interval to work on a set direction.  
 Pac-man would continue in the direction of the previous arrow until a new one was pressed and each ghost would travel in a straight line until hitting a wall and changing direction at random.
 
-##Code
+## Code
 The array I used to build out the maze:
 
-```
+``` Javascript
   var maze = [
     [3,3,0,3,3,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,13,3,3,3,3,3,3,3],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -59,7 +59,7 @@ The array I used to build out the maze:
 ```
 Partial code used to draw the maze, using values from the above array:
 
-```
+``` Javascript
 function drawMaze(){
     document.getElementById(`Game-Window`).innerHTML = "";
     for (var i = 0; i < maze.length; i++) {
@@ -74,7 +74,7 @@ function drawMaze(){
 ```
 Partial code of the logic behind pac-man's movement:
 
-```
+``` Javascript
 var pacMove = setInterval(pacMove, 320)
 
   // Function Loops That Starts Pac-Man Moving In Set Direction
@@ -93,15 +93,15 @@ var pacMove = setInterval(pacMove, 320)
         drawMaze();
 ```
 
-##Screenshots and Links
+## Screenshots and Links
 
 Play the game in its current state on Github Pages, [here](https://wcwoolley.github.io/Sparta-Core-Project-One/).
 
 **Main Menu:**
-![Menu Screenshot](images/MenuScreen.png) 
+![Menu Screenshot](images/MenuScreen.png)
 
 **Game Screen:**
-![Menu Screenshot](images/GameScreen.png) 
+![Menu Screenshot](images/GameScreen.png)
 
 **Game Over Screen:**
-![Menu Screenshot](images/GameOverScreen.png) 
+![Menu Screenshot](images/GameOverScreen.png)
