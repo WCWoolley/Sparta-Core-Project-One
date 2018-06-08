@@ -4,11 +4,11 @@
 ## Sparta Pac-Man
 Solo project to a build a game from scratch using HTML, CSS and JavaScript. Intended to mimic pac-man as closely as possible/
 
-##Installation
+## Installation
 
 Download via the zip file or by cloning the Repo from Github by clicking the green button labelled 'Clone or Download' [here](https://github.com/WCWoolley/Sparta-Core-Project-One) and open index.html in your browser. 
 
-##Challenges
+## Challenges
 
 The two big sticking points for this project were collisions and movement.  
 
@@ -19,7 +19,7 @@ The second problem came about from building the maze like this. Everything was m
 My fitst thought was to use a while loop to manage the direction but the game consistently crashed from attempting that, it likely would have worked with tweaking but I found a method I prefered. Since the map was being updated once a second or so to track positioning I thought to use an interval to work on a set direction.  
 Pac-man would continue in the direction of the previous arrow until a new one was pressed and each ghost would travel in a straight line until hitting a wall and changing direction at random.
 
-##Code
+## Code
 The array I used to build out the maze:
 
 ```
@@ -93,7 +93,7 @@ var pacMove = setInterval(pacMove, 320)
         drawMaze();
 ```
 
-##Screenshots and Links
+## Screenshots and Links
 
 Play the game in its current state on Github Pages, [here](https://wcwoolley.github.io/Sparta-Core-Project-One/).
 
