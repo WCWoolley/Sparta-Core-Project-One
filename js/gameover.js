@@ -34,7 +34,7 @@ $(document).ready(function(){
 
   // Click Function To Return To Main Menu
   $(".MMBtn").click(function(){
-    document.location.href = 'index.html';
+    document.location.href = '../index.html';
   })
 
 });

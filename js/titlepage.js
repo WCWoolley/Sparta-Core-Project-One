@@ -20,7 +20,7 @@ $(document).ready(function(){
 
   // Click Function To Start The Game
   $(".PBtn").click(function(){
-    document.location.href = 'game.html';
+    document.location.href = 'pages/game.html';
   })
 
 
