@@ -26,6 +26,7 @@ $(document).ready(function(){
     document.location.href = 'pages/game.html';
   })
 
+  // Click Funtion To Start Time Trial
   $(".TTBtn").click(function(){
     document.location.href = 'pages/timetrial.html';
   })

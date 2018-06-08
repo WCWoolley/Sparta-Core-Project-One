@@ -27,7 +27,7 @@ $(document).ready(function(){
     board2.append(row);
   }
 
-  // Click Function To Restart The Game
+  // Click Function To Restart The Time Trial
   $(".PABtn").click(function(){
     document.location.href = 'timetrial.html';
   })

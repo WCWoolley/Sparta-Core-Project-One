@@ -41,6 +41,7 @@ $(document).ready(function(){
     y: 23
   }
 
+  // Initial Variables
   var board = $('#Game-Window');
   var score = 0;
   var time = 45;
@@ -95,23 +96,7 @@ $(document).ready(function(){
     }
   }
 
-  // Sets The Direction Pac-Man Is Travelling
-  // document.onkeydown = function(e){
-  //   if ((e.keyCode === 37)) {
-  //     directionPM = 1;
-  //   } else if ((e.keyCode === 38)) {
-  //     directionPM = 2;
-  //   } else if ((e.keyCode === 39)) {
-  //     directionPM = 3;
-  //   } else if ((e.keyCode === 40)) {
-  //     directionPM = 4;
-  //   }
-  // }
-
-  // Pac-Man Move Interval
-  // var pacMove = setInterval(pacMove, 320)
-
-  // Function Loops That Starts Pac-Man Moving In Set Direction
+  // Function Sets The Direction Pac-Man Is Travelling And Steps Once In Said Direction
   document.onkeydown = function(e){
     if ((e.keyCode === 37)) {
       directionPM = 1;
@@ -236,11 +221,11 @@ $(document).ready(function(){
   // Initial Creation Of The Maze
   drawMaze();
 
-  // Counter Updating The Lives Counter Once A Second
-  var lifeWatch = setInterval(livesLeft, 1000)
+  // Counter Updating The Time Counter Once A Second
+  var timeWatch = setInterval(timeLeft, 1000)
 
   // Function To Switch To The Game Over Screen When Lives Hit Zero And Store Session Score
-  function livesLeft(){
+  function timeLeft(){
     if (time != 0) {
       time--;
     } else if (time === 0){

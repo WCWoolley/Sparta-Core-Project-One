@@ -65,7 +65,7 @@ $(document).ready(function(){
     y: 14
   }
 
-
+  // Initial Variables
   var board = $('#Game-Window');
   var score = 0;
   var lives = 2;
