@@ -22,7 +22,7 @@ Pac-man would continue in the direction of the previous arrow until a new one wa
 ## Code
 The array I used to build out the maze:
 
-```
+``` Javascript
   var maze = [
     [3,3,0,3,3,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,13,3,3,3,3,3,3,3],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -59,7 +59,7 @@ The array I used to build out the maze:
 ```
 Partial code used to draw the maze, using values from the above array:
 
-```
+``` Javascript
 function drawMaze(){
     document.getElementById(`Game-Window`).innerHTML = "";
     for (var i = 0; i < maze.length; i++) {
@@ -74,7 +74,7 @@ function drawMaze(){
 ```
 Partial code of the logic behind pac-man's movement:
 
-```
+``` Javascript
 var pacMove = setInterval(pacMove, 320)
 
   // Function Loops That Starts Pac-Man Moving In Set Direction
