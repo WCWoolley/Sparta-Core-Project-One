@@ -1,7 +1,9 @@
 $(document).ready(function(){
 
+  // Initial Variable
   var board3 = $('.Game-Start-Window');
 
+  // The Function That Builds A Table To Create The Game Window
   for (var i = 0; i < 8; i++) {
     var row = $('<tr class="row"></tr>');
     for (var j = 0; j < 8; j++) {
@@ -16,6 +18,7 @@ $(document).ready(function(){
     board3.append(row);
   }
 
+  // Click Function To Start The Game
   $(".PBtn").click(function(){
     document.location.href = 'game.html';
   })

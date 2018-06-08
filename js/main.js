@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  // The Array Used To Build The Maze
   var maze = [
     [3,3,0,3,3,3,3,3,3,3,3,8,3,3,3,3,3,3,3,3,13,3,3,3,3,3,3,3],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -34,30 +35,36 @@ $(document).ready(function(){
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   ];
 
+  // Pac-Man Starting Position
   var pacman = {
     x: 14,
     y: 23
   }
 
+  // Blinky Starting Position
   var blinky = {
     x: 12,
     y: 14
   }
 
+  // Pinky Starting Position
   var pinky = {
     x: 13,
     y: 14
   }
 
+  // Inky Starting Position
   var inky = {
     x: 14,
     y: 14
   }
 
+  // Clyde Starting Position
   var clyde = {
     x: 15,
     y: 14
   }
+
 
   var board = $('#Game-Window');
   var score = 0;
@@ -66,7 +73,7 @@ $(document).ready(function(){
   var directionPM = 1;
 
 
-
+  // The Function That Uses The Maze Array To Build Out The Maze
   function drawMaze(){
     document.getElementById(`Game-Window`).innerHTML = "";
     for (var i = 0; i < maze.length; i++) {
@@ -128,6 +135,7 @@ $(document).ready(function(){
     }
   }
 
+  // Sets The Direction Pac-Man Is Travelling
   document.onkeydown = function(e){
     if ((e.keyCode === 37)) {
       directionPM = 1;
@@ -140,8 +148,10 @@ $(document).ready(function(){
     }
   }
 
+  // Pac-Man Move Interval
   var pacMove = setInterval(pacMove, 320)
 
+  // Function Loops That Starts Pac-Man Moving In Set Direction
   function pacMove() {
     if (directionPM == 1) {
       if (maze[pacman.y][pacman.x-1] ==7 || maze[pacman.y][pacman.x-1] ==9 || maze[pacman.y][pacman.x-1] ==10 || maze[pacman.y][pacman.x-1] ==11) {
@@ -254,10 +264,13 @@ $(document).ready(function(){
     }
   }
 
+  // Pinky Move Interval
   var pinkyMove = setInterval(pinkyMove, 300)
 
+  // Pinky Initial Direction
   var directionP = 2;
 
+  // Function Loops That Starts Pinky Moving In Set Direction
   function pinkyMove() {
     if (maze[pinky.y-1][pinky.x] ==12) {
       maze[pinky.y][pinky.x] = 12;
@@ -361,10 +374,13 @@ $(document).ready(function(){
     }
   }
 
+  // Blinky Move Interval
   var blinkyMove = setInterval(blinkyMove, 300)
 
+  // Blinky Initial Direction
   var directionB = 3;
 
+  // Function Loops That Starts Blinky Moving In Set Direction
   function blinkyMove() {
     if (maze[blinky.y-1][blinky.x] ==12) {
       maze[blinky.y][blinky.x] = 12;
@@ -452,10 +468,13 @@ $(document).ready(function(){
     }
   }
 
+  // Inky Move Interval
   var inkyMove = setInterval(inkyMove, 300)
 
+  // Inky Initial Direction
   var directionI = 6;
 
+  // Function Loops That Starts Inky Moving In Set Direction
   function inkyMove() {
     if (maze[inky.y-1][inky.x] ==12) {
       maze[inky.y][inky.x] = 12;
@@ -543,10 +562,13 @@ $(document).ready(function(){
     }
   }
 
+  // Clyde Move Interval
   var clydeMove = setInterval(clydeMove, 300)
 
+  // Clyde Initial Direction
   var directionC = 3;
 
+  // Function Loops That Starts Clyde Moving In Set Direction
   function clydeMove() {
     if (maze[clyde.y-1][clyde.x] ==12) {
       maze[clyde.y][clyde.x] = 12;
@@ -634,10 +656,13 @@ $(document).ready(function(){
     }
   }
 
+  // Initial Creation Of The Maze
   drawMaze();
 
+  // Counter Updating The Lives Counter Once A Second
   var lifeWatch = setInterval(livesLeft, 1000)
 
+  // Function To Switch To The Game Over Screen When Lives Hit Zero And Store Session Score
   function livesLeft(){
     if (lives <= 0){
       sessionStorage.setItem("score",`${score}`);
