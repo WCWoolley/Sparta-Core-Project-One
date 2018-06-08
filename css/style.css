@@ -75,6 +75,15 @@ td {
   width: 150px;
 }
 
+.TTBtn {
+  padding-left: 10px;
+  margin: 0;
+  background-color: black;
+  border: 1px solid white;
+  height: 40px;
+  width: 150px;
+}
+
 .MMBtn {
   padding-left: 10px;
   margin: 0;
