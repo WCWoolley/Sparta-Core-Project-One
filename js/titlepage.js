@@ -10,6 +10,9 @@ $(document).ready(function(){
       if (i === 4 && j === 3) {
         var col = $(`<td class="col end"><button class="PBtn">PLAY GAME</button></td>`);
         row.append(col);
+      } else if (i === 5 && j === 3) {
+        var col = $(`<td class="col end"><button class="TTBtn">TIME TRIAL</button></td>`);
+        row.append(col);
       } else {
         var col = $(`<td class="col end"></td>`);
         row.append(col);
@@ -21,6 +24,10 @@ $(document).ready(function(){
   // Click Function To Start The Game
   $(".PBtn").click(function(){
     document.location.href = 'pages/game.html';
+  })
+
+  $(".TTBtn").click(function(){
+    document.location.href = 'pages/timetrial.html';
   })
 
 
