@@ -228,6 +228,7 @@ $(document).ready(function(){
   function timeLeft(){
     if (time != 0) {
       time--;
+      drawMaze();
     } else if (time === 0){
       sessionStorage.setItem("score",`${score}`);
       document.location.href = 'gameovertime.html';
